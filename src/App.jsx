@@ -12,7 +12,7 @@ function App() {
     setThemeMode("dark");
   };
   const lightTheme = () => {
-  setThemeMode("light");
+    setThemeMode("light");
   };
 
   useEffect(() => {
@@ -25,7 +25,9 @@ function App() {
     <ModeProvider value={{ themeMode, darkTheme, lightTheme }}>
       <Header />
       <Outlet />
-      <Footer />
+      <div className="fixed b-1">
+        <Footer />
+      </div>
     </ModeProvider>
   );
 }
