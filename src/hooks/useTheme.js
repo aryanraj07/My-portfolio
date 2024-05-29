@@ -17,7 +17,7 @@ const useTheme = () => {
     setIsCross((prev) => !prev);
   };
 
-  return {   isCross, toggleCross,changeMode };
+  return {   isCross, toggleCross,changeMode,setIsCross };
 }
 
 export default useTheme;

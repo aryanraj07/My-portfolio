@@ -4,7 +4,13 @@ import useTheme from "../hooks/useTheme";
 import useMode from "../context/DarkMode";
 
 const MObileVIew = ({ isOpen, toggleCross }) => {
+  const { changeMode, setIsCross } = useTheme();
   const { themeMode } = useMode();
+  const themechanger = () => {
+    // Close the menu unconditionally before changing theme
+    toggleCross();
+    changeMode();
+  };
 
   return (
     <>
@@ -57,7 +63,7 @@ const MObileVIew = ({ isOpen, toggleCross }) => {
               </li>
             </ul>
             <button
-              onClick={toggleCross}
+              onClick={themechanger}
               className="bg-green-600 text-white dark:bg-indigo-950 p-2 mt-6"
             >
               {themeMode === "light" ? (
