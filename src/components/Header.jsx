@@ -1,5 +1,5 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { useState } from "react";
+import { Link } from "react-scroll";
 import { LuMenu } from "react-icons/lu";
 import { RxCross1 } from "react-icons/rx";
 import MobileView from "./MobileView";
@@ -7,8 +7,24 @@ import useTheme from "../hooks/useTheme";
 import useMode from "../context/DarkMode";
 
 const Header = () => {
-  const { isCross, toggleCross } = useTheme();
+  // const { isCross, toggleCross } = useTheme();
+  const [isCross, setIsCross] = useState(false);
+
   const { themeMode, darkTheme, lightTheme } = useMode();
+  const navLists = [
+    {
+      id: "home",
+      title: "Home",
+    },
+    {
+      id: "explore",
+      title: "Explore",
+    },
+    {
+      id: "contact",
+      title: "Contact",
+    },
+  ];
 
   const changeMode = () => {
     if (themeMode === "light") {
@@ -20,66 +36,59 @@ const Header = () => {
 
   return (
     <div>
-      <nav className="container px-3 py-3 rounded-lg dark:bg-black dark:text-white bg-indigo-200 flex justify-between items-center">
-        <Link
-          to=""
-          className="logo text-indigo-950 font-extrabold dark:text-white text-2xl p-4 md:p-3"
-        >
-          Aryans'Portfolio
-        </Link>
-        <ul className="md:flex gap-14 font-bold items-center hidden">
-          <li>
-            <NavLink
-              className={({ isActive }) =>
-                `${
-                  isActive ? "text-green-500" : "text-black dark:text-white"
-                } hover:font-extrabold duration-300 hover:text-purple-700 hover:text-xl`
-              }
-              to=""
-            >
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              className={({ isActive }) =>
-                `${
-                  isActive ? "text-green-500" : "text-black dark:text-white"
-                } hover:text-purple-700 hover:text-xl hover:font-extrabold duration-300`
-              }
-              to="/about"
-            >
-              About
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              className={({ isActive }) =>
-                `${
-                  isActive ? "text-green-500" : "text-black dark:text-white"
-                } hover:text-purple-700 hover:text-xl hover:font-extrabold duration-300`
-              }
-              to="/contact"
-            >
-              Contact Me
-            </NavLink>
-          </li>
-        </ul>
-        <button
-          onClick={changeMode}
-          className="bg-green-600 text-white dark:bg-indigo-950 p-2 hidden md:block"
-        >
-          {themeMode === "light" ? (
-            <span className="material-symbols-outlined">dark_mode</span>
-          ) : (
-            <span className="material-symbols-outlined">wb_sunny</span>
-          )}
-        </button>
-        <div className="md:hidden text-5xl" onClick={toggleCross}>
-          {isCross ? <RxCross1 /> : <LuMenu />}
+      <nav className="container px-4 md:px-20 rounded-lg dark:bg-black dark:text-white bg-indigo-100  max-w-screen-2xl fixed top-0 left-0 right-0 z:50 ">
+        <div className="flex justify-between items-center">
+          <img src="./logoaryan.svg" alt="" className="h-10 w-20" />
+          <span> Aryan's Portfolio</span>
+
+          <ul className="md:flex gap-14 font-bold items-center hidden">
+            {navLists &&
+              navLists.length &&
+              navLists.map((item) => (
+                <li key={item.id}>
+                  <Link to={item.id} scrolling="smooth" offset={70}>
+                    {item.title}
+                  </Link>
+                </li>
+              ))}
+          </ul>
+          <button
+            onClick={changeMode}
+            className="bg-green-600 text-white dark:bg-indigo-950 p-2 hidden md:block"
+          >
+            {themeMode === "light" ? (
+              <span className="material-symbols-outlined">dark_mode</span>
+            ) : (
+              <span className="material-symbols-outlined">wb_sunny</span>
+            )}
+          </button>
+          <div
+            className="md:hidden text-5xl"
+            onClick={() => setIsCross((prev) => !prev)}
+          >
+            {isCross ? <RxCross1 /> : <LuMenu />}
+          </div>
         </div>
+        {isCross && (
+          <div className="flex flex-col gap-2">
+            <ul className="md:hidden flex flex-col h-screen items-center justify-center">
+              {navLists &&
+                navLists.length &&
+                navLists.map((item) => <li key={item.id}>{item.title}</li>)}
+            </ul>
+            <button
+              onClick={changeMode}
+              className="bg-green-600 text-white dark:bg-indigo-950 p-2 md:hidden "
+            >
+              {themeMode === "light" ? (
+                <span className="material-symbols-outlined">dark_mode</span>
+              ) : (
+                <span className="material-symbols-outlined">wb_sunny</span>
+              )}
+            </button>
+          </div>
+        )}
       </nav>
-      <MobileView isOpen={isCross} toggleCross={toggleCross} />
     </div>
   );
 };

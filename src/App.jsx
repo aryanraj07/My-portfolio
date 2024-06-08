@@ -2,9 +2,12 @@ import { useEffect, useState } from "react";
 
 import "./App.css";
 import Header from "./components/Header";
-import { Outlet } from "react-router-dom";
+
 import Footer from "./components/Footer";
 import { ModeProvider } from "./context/DarkMode";
+import Home from "./components/Home";
+import About from "./components/About/About";
+import Contact from "./components/Contact";
 
 function App() {
   const [themeMode, setThemeMode] = useState("light");
@@ -23,9 +26,13 @@ function App() {
 
   return (
     <ModeProvider value={{ themeMode, darkTheme, lightTheme }}>
-      <Header />
-      <Outlet />
-      <div className="fixed b-1">
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <div className="flex-grow mt-20 md:mt-24">
+          <Home />
+          <About />/
+          <Contact />
+        </div>
         <Footer />
       </div>
     </ModeProvider>
