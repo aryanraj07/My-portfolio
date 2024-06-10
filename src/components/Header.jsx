@@ -21,6 +21,11 @@ const Header = () => {
     },
     {
       id: 3,
+      name: "Resume",
+      link: "#resume",
+    },
+    {
+      id: 4,
       name: "Connect",
       link: "#connect",
     },

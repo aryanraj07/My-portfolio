@@ -2,7 +2,7 @@ import React from "react";
 
 const Resume = () => {
   return (
-    <div className="bg-slate-200 dark:bg-gray-900 py-10 md:py-20">
+    <div className="bg-slate-200 dark:bg-gray-900 py-10 md:py-20" id="resume">
       <div className="container mx-auto px-4 md:px-8 flex flex-col justify-center items-center gap-5 md:gap-10">
         {/* Our heading goes here */}
         <h1 className="text-2xl md:text-4xl text-center dark:text-white">
