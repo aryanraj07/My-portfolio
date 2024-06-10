@@ -7,10 +7,25 @@ export default {
   darkMode:"class",
   theme: {
     extend: {
-      colors: {
-        
-    },
+      colors:{
+        primary: "#5d60c1",
+      dark: "#1e1ele",
+    light: "#f5f5f5",
+  "lightBlue": "#dbedf7"
   },
+  fontFamily:{
+    sans:['Poppins','sans-serif']
+  },
+  container:{
+    center:true,
+    padding:{
+      DEFAULT:"3rem",
+      sm:"4rem"
+    },
+
+  },
+},
+
+    },
   plugins: [],
 }
-

@@ -1,23 +1,18 @@
 import { useState } from 'react';
-import useMode from '../context/DarkMode';
+
 
 const useTheme = () => {
-  const { themeMode, darkTheme, lightTheme } = useMode();
-  const [isCross, setIsCross] = useState(false);
 
-  const changeMode = () => {
-    if (themeMode === "light") {
-      darkTheme();
-    } else {
-      lightTheme();
+  const handleSmoothScroll = (event, link) => {
+    event.preventDefault();
+    const targetSection = document.querySelector(link);
+    if (targetSection) {
+      targetSection.scrollIntoView({ behavior: "smooth" });
     }
   };
 
-  const toggleCross = () => {
-    setIsCross((prev) => !prev);
-  };
 
-  return {   isCross, toggleCross,changeMode,setIsCross };
+  return {   handleSmoothScroll };
 }
 
 export default useTheme;

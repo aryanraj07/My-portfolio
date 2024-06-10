@@ -1,28 +1,28 @@
 import React, { useState } from "react";
-import { Link } from "react-scroll";
-import { LuMenu } from "react-icons/lu";
+import { useMode } from "../context";
+import { FaBars } from "react-icons/fa";
 import { RxCross1 } from "react-icons/rx";
-import MobileView from "./MobileView";
 import useTheme from "../hooks/useTheme";
-import useMode from "../context/DarkMode";
 
 const Header = () => {
-  // const { isCross, toggleCross } = useTheme();
-  const [isCross, setIsCross] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const { themeMode, lightTheme, darkTheme } = useMode();
 
-  const { themeMode, darkTheme, lightTheme } = useMode();
-  const navLists = [
+  const Menus = [
     {
-      id: "home",
-      title: "Home",
+      id: 1,
+      name: "Home",
+      link: "#home",
     },
     {
-      id: "explore",
-      title: "Explore",
+      id: 2,
+      name: "Explore",
+      link: "#explore",
     },
     {
-      id: "contact",
-      title: "Contact",
+      id: 3,
+      name: "Connect",
+      link: "#connect",
     },
   ];
 
@@ -34,61 +34,73 @@ const Header = () => {
     }
   };
 
-  return (
-    <div>
-      <nav className="container px-4 md:px-20 rounded-lg dark:bg-black dark:text-white bg-indigo-100  max-w-screen-2xl fixed top-0 left-0 right-0 z:50 ">
-        <div className="flex justify-between items-center">
-          <img src="./logoaryan.svg" alt="" className="h-10 w-20" />
-          <span> Aryan's Portfolio</span>
+  const { handleSmoothScroll } = useTheme();
 
-          <ul className="md:flex gap-14 font-bold items-center hidden">
-            {navLists &&
-              navLists.length &&
-              navLists.map((item) => (
-                <li key={item.id}>
-                  <Link to={item.id} scrolling="smooth" offset={70}>
-                    {item.title}
-                  </Link>
-                </li>
-              ))}
-          </ul>
-          <button
-            onClick={changeMode}
-            className="bg-green-600 text-white dark:bg-indigo-950 p-2 hidden md:block"
-          >
+  return (
+    <div className="bg-lightBlue z-50">
+      <div className="container mx-auto py-2 px-4">
+        <div className="flex items-center justify-between">
+          {/* Logo */}
+          <div className="flex items-center gap-2">
+            <img src="./logoaryan.svg" alt="aryan logo" className="w-10" />
+            <h2 className="text-indigo-900 text-xl lg:text-2xl font-bold">
+              Aryan's Portfolio
+            </h2>
+          </div>
+
+          {/* Links */}
+          <div className="hidden lg:flex gap-6">
+            {Menus.map((menu) => (
+              <a
+                key={menu.id}
+                href={menu.link}
+                className="text-lg font-Poppins px-4 py-2 hover:scale-110 transition-transform duration-200 hover:text-indigo-950"
+                onClick={(e) => handleSmoothScroll(e, menu.link)}
+              >
+                {menu.name}
+              </a>
+            ))}
+          </div>
+
+          {/* Theme Toggle Button */}
+          <button onClick={changeMode} className="ml-4">
             {themeMode === "light" ? (
-              <span className="material-symbols-outlined">dark_mode</span>
+              <span className="material-symbols-outlined text-3xl">
+                dark_mode
+              </span>
             ) : (
-              <span className="material-symbols-outlined">wb_sunny</span>
+              <span className="material-symbols-outlined text-3xl">
+                light_mode
+              </span>
             )}
           </button>
-          <div
-            className="md:hidden text-5xl"
-            onClick={() => setIsCross((prev) => !prev)}
-          >
-            {isCross ? <RxCross1 /> : <LuMenu />}
+
+          {/* Mobile Responsive */}
+          <div className="lg:hidden">
+            <button
+              onClick={() => setIsOpen((prev) => !prev)}
+              className="text-3xl"
+            >
+              {isOpen ? <RxCross1 /> : <FaBars />}
+            </button>
+            {isOpen && (
+              <ul className="absolute top-16 left-0 w-full bg-white dark:bg-gray-800 shadow-md rounded-md z-50">
+                {Menus.map((menu) => (
+                  <li key={menu.id} className="w-full text-center">
+                    <a
+                      href={menu.link}
+                      className="block py-4 text-lg text-gray-800 dark:text-white hover:bg-primary hover:text-white hover:w-full"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {menu.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         </div>
-        {isCross && (
-          <div className="flex flex-col gap-2">
-            <ul className="md:hidden flex flex-col h-screen items-center justify-center">
-              {navLists &&
-                navLists.length &&
-                navLists.map((item) => <li key={item.id}>{item.title}</li>)}
-            </ul>
-            <button
-              onClick={changeMode}
-              className="bg-green-600 text-white dark:bg-indigo-950 p-2 md:hidden "
-            >
-              {themeMode === "light" ? (
-                <span className="material-symbols-outlined">dark_mode</span>
-              ) : (
-                <span className="material-symbols-outlined">wb_sunny</span>
-              )}
-            </button>
-          </div>
-        )}
-      </nav>
+      </div>
     </div>
   );
 };

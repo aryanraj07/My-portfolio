@@ -1,12 +1,12 @@
 import { createContext, useContext } from "react";
 
-const DarkMode=createContext({
+export const DarkMode=createContext({
     themeMode:"light",
     darkTheme:()=>{},
     lightTheme:()=>{},
 
 })
 export const ModeProvider=DarkMode.Provider;
-export default function useMode(){
+export  function useMode(){
 return useContext(DarkMode);
 }

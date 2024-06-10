@@ -4,10 +4,13 @@ import "./App.css";
 import Header from "./components/Header";
 
 import Footer from "./components/Footer";
-import { ModeProvider } from "./context/DarkMode";
+import { ModeProvider } from "./context";
 import Home from "./components/Home";
 import About from "./components/About/About";
 import Contact from "./components/Contact";
+import Projects from "./components/Projects";
+import Resume from "./components/Resume";
+import Achievements from "./components/Achievements";
 
 function App() {
   const [themeMode, setThemeMode] = useState("light");
@@ -17,7 +20,13 @@ function App() {
   const lightTheme = () => {
     setThemeMode("light");
   };
-
+  function handleScrollToTop() {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  }
   useEffect(() => {
     let elem = document.querySelector("html").classList;
     elem.remove("light", "dark");
@@ -26,15 +35,17 @@ function App() {
 
   return (
     <ModeProvider value={{ themeMode, darkTheme, lightTheme }}>
-      <div className="min-h-screen flex flex-col">
-        <Header />
-        <div className="flex-grow mt-20 md:mt-24">
-          <Home />
-          <About />/
-          <Contact />
-        </div>
-        <Footer />
+      <Header />
+
+      <div className="">
+        <Home />
+        <About />
+        <Projects />
+        <Resume />
+        <Achievements />
+        <Contact />
       </div>
+      <Footer />
     </ModeProvider>
   );
 }
