@@ -19,7 +19,7 @@ const Contact = () => {
             {" "}
             Let's Connect
           </div>
-          <div className="flex items-center justify-evenly flex-wrap gap-8 md:gap-12 dark:text-white text-5xl">
+          <div className="flex items-center justify-evenly flex-wrap gap-8 md:gap-12 dark:text-white text-5xl hover:scale-125 duration-200">
             <a href="">
               <FaLinkedinIn />{" "}
             </a>
@@ -35,7 +35,7 @@ const Contact = () => {
             <a href=""></a>
           </div>
           <a href="#home" onClick={(e) => handleSmoothScroll(e, "#home")}>
-            <FaArrowAltCircleUp className="text-3xl dark:text-white hover:scale-125 duration-200" />
+            <FaArrowAltCircleUp className="text-3xl dark:text-white hover:scale-125 duration-200 " />
           </a>
         </div>
       </div>
