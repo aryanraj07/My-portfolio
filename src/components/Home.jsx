@@ -34,12 +34,20 @@ const Home = () => {
 
           <div className="flex flex-col md:flex-row md:gap-15 gap-8 items-center ">
             <div className="flex gap-5 items-center mt-5 md:mt-7">
-              <Link to="https://www.linkedin.com/in/aryanraj07/">
+              <a
+                href="https://www.linkedin.com/in/aryanraj07/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FaLinkedin className="hover:scale-110 duration-200 cursor-pointer" />
-              </Link>
-              <Link to="https://github.com/aryanraj07">
+              </a>
+              <a
+                href="https://github.com/aryanraj07"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FaGithub className="hover:scale-110 duration-200 cursor-pointer" />
-              </Link>
+              </a>
             </div>
             <div className="md:pl-20 pl-0 flex justify-center">
               {/* Add download resume button here if needed */}
