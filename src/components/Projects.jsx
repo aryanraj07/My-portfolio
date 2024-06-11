@@ -11,24 +11,38 @@ const Projects = () => {
     },
     {
       id: 2,
+      title: "Modern Bank App",
+      imageurl: "bank.png",
+      desc: "Modern Bank App",
+      link: "https://modern-bank-app-brown.vercel.app/",
+    },
+    {
+      id: 3,
       title: "Dice Game",
       imageurl: "dice.png",
       desc: "Dice Game using React and Tailwind CSS",
       link: "https://dice-game-tau-five.vercel.app/",
     },
     {
-      id: 3,
+      id: 4,
       title: "Firebase Contact App",
       imageurl: "contact.png",
       desc: "Firebase Contact App using React and Google Firebase",
       link: "https://contact-firebase-app.vercel.app/",
     },
     {
-      id: 4,
+      id: 5,
       title: "Special Memories App",
       imageurl: "memories.png",
       desc: "Memories App using React and Google Firebase",
       link: "https://memory-coral.vercel.app/",
+    },
+    {
+      id: 6,
+      title: "Todo App",
+      imageurl: "todo.png",
+      desc: "Todo App using Context Api and localstorage",
+      link: "https://todo-gamma-lac.vercel.app/",
     },
   ];
 

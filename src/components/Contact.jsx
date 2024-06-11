@@ -19,23 +19,38 @@ const Contact = () => {
             {" "}
             Let's Connect
           </div>
-          <div className="flex items-center justify-evenly flex-wrap gap-8 md:gap-12 dark:text-white text-5xl hover:scale-125 duration-200">
-            <a href="">
-              <FaLinkedinIn />{" "}
+          <div className="flex items-center justify-evenly flex-wrap gap-8 md:gap-12 dark:text-white text-5xl ">
+            <a
+              href="https://www.linkedin.com/in/aryanraj07/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaLinkedinIn className="hover:scale-125 duration-200" />{" "}
             </a>
-            <a href="">
-              <FaGithub />
+            <a
+              href="https://github.com/aryanraj07"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaGithub className="hover:scale-125 duration-200" />
             </a>
-            <a href="">
-              <FaInstagram />
+            <a
+              href="https://www.instagram.com/aryannn__07_/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaInstagram className="hover:scale-125 duration-200" />
             </a>
-            <a href="">
-              <FaTwitter />
+            <a
+              href="https://twitter.com/aryan314587"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaTwitter className="hover:scale-125 duration-200" />
             </a>
-            <a href=""></a>
           </div>
           <a href="#home" onClick={(e) => handleSmoothScroll(e, "#home")}>
-            <FaArrowAltCircleUp className="text-3xl dark:text-white hover:scale-125 duration-200 " />
+            <FaArrowAltCircleUp className="text-4xl md:text-5xl dark:text-white hover:scale-125 duration-200 " />
           </a>
         </div>
       </div>
