@@ -42,8 +42,8 @@ const Header = () => {
   const { handleSmoothScroll } = useTheme();
 
   return (
-    <div className="bg-lightBlue z-50">
-      <div className="container mx-auto py-2 px-4">
+    <div className="bg-lightBlue z-50 shadow-lg shadow-sky-300 dark:bg-slate-900 dark:text-white ">
+      <div className="container mx-auto py-2 px-4 lg:px-10">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-2">
@@ -59,7 +59,7 @@ const Header = () => {
               <a
                 key={menu.id}
                 href={menu.link}
-                className="text-lg font-Poppins px-4 py-2 hover:scale-110 transition-transform duration-200 hover:text-indigo-950"
+                className="text-lg font-Poppins px-4 py-2 hover:scale-110 transition-transform duration-200 hover:text-orange-500 dark:hover:text-green-400"
                 onClick={(e) => handleSmoothScroll(e, menu.link)}
               >
                 {menu.name}

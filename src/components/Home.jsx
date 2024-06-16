@@ -21,7 +21,7 @@ const Home = () => {
           </p>
           <p>
             I am{" "}
-            <span className="text-orange-500 dark:text-green-500">
+            <span className="text-orange-500 dark:text-green-500 ">
               Aryan Raj
             </span>
           </p>
@@ -55,11 +55,11 @@ const Home = () => {
           </div>
         </div>
         <div className="flex justify-center md:justify-end w-full md:w-1/2 mt-8 md:mt-0 order-1 md:order-2">
-          <div className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
+          <div className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 group">
             <img
               src="./aryanspic.jpg"
               alt="Aryan Raj"
-              className="w-full h-full object-cover rounded-3xl"
+              className="w-full h-full object-cover rounded-3xl group-hover:scale-105 duration-300"
             />
           </div>
         </div>
@@ -71,13 +71,13 @@ const Home = () => {
         </a>
       </div>
       <div className="container mx-auto py-4 md:py-8 px-4 md:px-8 mt-8 md:mt-14">
-        <div className="bg-white shadow-md flex md:flex-row flex-col gap-6 md:gap-2 items-center text-xl text-slate-700 dark:text-white dark:bg-gray-900">
+        <div className="bg-white shadow-md shadow-red-200 flex md:flex-row flex-col gap-6 md:gap-2 items-center text-xl text-slate-700 dark:text-white dark:bg-gray-900">
           <div className="flex justify-center md:justify-start w-full md:w-1/2 mt-8 md:mt-0">
-            <div className="w-64 h-74 md:w-80 md:h-90 lg:w-96 lg:h-96">
+            <div className="w-64 h-74 md:w-80 md:h-90 lg:w-96 lg:h-96 group">
               <img
                 src="./aryansummary.jpg"
                 alt="aryansummary"
-                className="w-full h-full object-cover rounded-3xl"
+                className="w-full h-full object-cover rounded-3xl group-hover:scale-105 duration-300"
               />
             </div>
           </div>
